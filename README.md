@@ -38,4 +38,11 @@ DeviceFileEvents
 | project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName
 
 
+```
+![Screenshot 2025-04-20 at 18-09-34 Advanced hunting - Microsoft Defender](https://github.com/user-attachments/assets/fb340bed-540b-4108-8d65-ed343b2297fe)
+
+
+
+
+
 

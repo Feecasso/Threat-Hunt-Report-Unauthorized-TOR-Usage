@@ -77,6 +77,24 @@ DeviceProcessEvents
 ![Screenshot 2025-04-20 at 18-52-54 Advanced hunting - Microsoft Defender](https://github.com/user-attachments/assets/5a435571-7693-401e-83d0-bf10f0f00ff1)
 
 ---
+### 4. Searched the `DeviceNetworkEvents` Table for TOR Network Connections
+
+Searched for any indication the TOR browser was used to establish a connection using any of the known TOR ports. At `2024-11-08T22:18:01.1246358Z`, an employee on the "threat-hunt-lab" device successfully established a connection to the remote IP address `116.255.1.163` on port `9001`. The connection was initiated by the process `tor.exe`, located in the folder `c:\users\feecasso\desktop\tor browser\browser\torbrowser\tor\tor.exe`. There were a couple of other connections to sites over port `443`.
+
+**Query used to locate events:**
+
+```kql
+DeviceNetworkEvents  
+| where DeviceName == "test-tor"  
+| where InitiatingProcessAccountName != "system"  
+| where InitiatingProcessFileName in ("tor.exe", "firefox.exe")  
+| where RemotePort in ("9001", "9030", "9040", "9050", "9051", "9150", "80", "443")  
+| project Timestamp, DeviceName, InitiatingProcessAccountName, ActionType, RemoteIP, RemotePort, RemoteUrl, InitiatingProcessFileName, InitiatingProcessFolderPath  
+| order by Timestamp desc
+```
+![Screenshot 2025-04-20 at 19-01-05 Advanced hunting - Microsoft Defender](https://github.com/user-attachments/assets/78dbec83-76f9-4e90-a78e-9ed9dae7b93a)
+
+---
 
 
 

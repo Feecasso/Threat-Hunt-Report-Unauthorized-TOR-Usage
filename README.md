@@ -59,6 +59,25 @@ DeviceProcessEvents
 ```
 ![Screenshot 2025-04-20 at 18-40-57 Advanced hunting - Microsoft Defender](https://github.com/user-attachments/assets/2bdb61da-745a-433f-a2a7-608b260546f4)
 
+---
+
+### 3. Searched the `DeviceProcessEvents` Table for TOR Browser Execution
+
+Searched for any indication that user "employee" actually opened the TOR browser. There was evidence that they did open it at `2025-04-20T23:51:37.5801973Z`. There were several other instances of `firefox.exe` (TOR) as well as `tor.exe` spawned afterwards.
+
+**Query used to locate events:**
+
+```kql
+DeviceProcessEvents  
+| where DeviceName == "test-tor"  
+| where FileName has_any ("tor.exe", "firefox.exe", "tor-browser.exe")  
+| project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine  
+| order by Timestamp desc
+```
+![Screenshot 2025-04-20 at 18-52-54 Advanced hunting - Microsoft Defender](https://github.com/user-attachments/assets/5a435571-7693-401e-83d0-bf10f0f00ff1)
+
+---
+
 
 
 

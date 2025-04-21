@@ -36,3 +36,6 @@ DeviceFileEvents
 | where Timestamp >= datetime(2025-04-20T23:46:18.2754863Z)  
 | order by Timestamp desc  
 | project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName
+
+![Screenshot 2025-04-20 at 18-09-34 Advanced hunting - Microsoft Defender](https://github.com/user-attachments/assets/71ea85d2-944c-48af-b94d-11005f6509d2)
+

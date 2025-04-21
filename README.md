@@ -120,12 +120,6 @@ DeviceNetworkEvents
 
 ---
 
-## ✅ Summary
-
-Unauthorized TOR usage confirmed. User attempted to bypass security controls via the TOR browser, initiated encrypted outbound traffic, and left behind potentially suspicious artifacts (e.g. `tor-shopping-list.txt`).
-
-> 🔐 Recommended actions: Endpoint isolation, user credential reset, firewall rules update, security awareness reinforcement.
-
 
 ## ✅ Summary
 
@@ -151,6 +145,13 @@ An investigation was conducted following concerns of unauthorized TOR browser us
 
 **Status**: 🚨 Confirmed unauthorized TOR usage.  
 **Action Required**: Immediate incident response and mitigation.
+
+## 🛠️ Response Taken
+
+TOR usage was confirmed on the endpoint `test-tor` by the user `feecasso`.
+
+- The device `test-tor` was **isolated** via Microsoft Defender for Endpoint to prevent further network activity.
+- The user's **direct manager was notified** regarding the policy violation.
 
 
 

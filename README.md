@@ -127,5 +127,32 @@ Unauthorized TOR usage confirmed. User attempted to bypass security controls via
 > 🔐 Recommended actions: Endpoint isolation, user credential reset, firewall rules update, security awareness reinforcement.
 
 
+## ✅ Summary
+
+An investigation was conducted following concerns of unauthorized TOR browser usage within the organization. The threat hunt revealed that a user (`feecasso`) on two devices (`test-tor` and `threat-hunt-lab`) had:
+
+- Downloaded and executed the TOR browser (`tor-browser-windows-x86_64-portable-14.5.exe`)
+- Created multiple TOR-related files, including `tor.exe`, `firefox.exe`, and a suspicious text file named `tor-shopping-list.txt`
+- Launched TOR processes from the desktop directory
+- Established outbound connections to known TOR network entry nodes over port `9001` and port `443`
+
+### 🔒 Risk Assessment
+
+- TOR usage enables users to bypass corporate network controls, potentially leading to data exfiltration or access to unauthorized/dark web resources.
+- Activity was deliberate and sustained, suggesting intentional circumvention of company policy.
+
+### 📢 Recommendation Summary
+
+- **Isolate affected endpoints** for full forensic review.
+- **Reset credentials** for user `feecasso` and audit their access.
+- **Update firewall and proxy rules** to block TOR-related traffic (ports and IPs).
+- **Deploy detection rules** for TOR-related executables and behaviors in the EDR.
+- **Conduct user awareness training** to reinforce acceptable use policies.
+
+**Status**: 🚨 Confirmed unauthorized TOR usage.  
+**Action Required**: Immediate incident response and mitigation.
+
+
+
 
 

@@ -94,7 +94,37 @@ DeviceNetworkEvents
 ```
 ![Screenshot 2025-04-20 at 19-01-05 Advanced hunting - Microsoft Defender](https://github.com/user-attachments/assets/78dbec83-76f9-4e90-a78e-9ed9dae7b93a)
 
+
 ---
+# 🕵️‍♂️ Threat Hunt: Unauthorized TOR Usage
+
+## 🕒 Chronological Event Timeline
+
+| Timestamp (UTC)           | Event Description                                                                 |
+|---------------------------|------------------------------------------------------------------------------------|
+| **2025-04-20 23:46:18**   | TOR installer (`tor-browser-windows-x86_64-portable-14.5.exe`) executed silently on `threat-hunt-lab` by user `feecasso`. |
+| **2025-04-20 23:46:18**   | TOR-related file activity begins on `test-tor`. Multiple files copied to the desktop by `feecasso`. |
+| **2025-04-20 23:51:37**   | TOR browser (`tor.exe`) launched by `feecasso` on `test-tor`.                                                          |
+| **2025-04-20 23:51:50**   | Outbound network connection to TOR node `116.255.1.163` over port `9001` from `tor.exe`.                              |
+| **2025-04-21 00:20:47**   | File `tor-shopping-list.txt` created on `test-tor` desktop by `feecasso`.                                             |
+
+---
+
+## 🧑‍💻 Involved Entities
+
+- **User**: `feecasso`  
+- **Devices**: `test-tor`, `threat-hunt-lab`  
+- **Processes**: `tor.exe`, `firefox.exe`, `tor-browser.exe`  
+- **Remote IP**: `116.255.1.163` (TOR Node)  
+- **Ports**: `9001`, `443`
+
+---
+
+## ✅ Summary
+
+Unauthorized TOR usage confirmed. User attempted to bypass security controls via the TOR browser, initiated encrypted outbound traffic, and left behind potentially suspicious artifacts (e.g. `tor-shopping-list.txt`).
+
+> 🔐 Recommended actions: Endpoint isolation, user credential reset, firewall rules update, security awareness reinforcement.
 
 
 

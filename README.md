@@ -42,6 +42,22 @@ DeviceFileEvents
 ![Screenshot 2025-04-20 at 18-09-34 Advanced hunting - Microsoft Defender](https://github.com/user-attachments/assets/fb340bed-540b-4108-8d65-ed343b2297fe)
 
 
+---
+
+### 2. Searched the `DeviceProcessEvents` Table
+
+Searched for any `ProcessCommandLine` that contained the string "tor-browser-windows-x86_64-portable-14.0.1.exe". Based on the logs returned, at `2025-04-20T23:46:18.2754863Z`, an employee on the "threat-hunt-lab" device ran the file `tor-browser-windows-x86_64-portable-14.5.exe` from their Downloads folder, using a command that triggered a silent installation.
+
+**Query used to locate event:**
+
+```kql
+
+DeviceProcessEvents  
+| where DeviceName == "threat-hunt-lab"  
+| where ProcessCommandLine contains "tor-browser-windows-x86_64-portable-14.5.exe"  
+| project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine
+```
+![Screenshot 2025-04-20 at 18-40-57 Advanced hunting - Microsoft Defender](https://github.com/user-attachments/assets/2bdb61da-745a-433f-a2a7-608b260546f4)
 
 
 
